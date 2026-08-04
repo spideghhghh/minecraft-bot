@@ -1,7 +1,7 @@
 const http = require('http');
 const mineflayer = require('mineflayer');
 
-// 1. خادم ويب وهمي بسيط لتلبية شروط منصة Render وفتح البورت المطلوب مجاناً
+// خادم الويب الوهمي لإرضاء منصة Render
 const server = http.createServer((req, res) => {
   res.writeHead(200, { 'Content-Type': 'text/plain' });
   res.end('Minecraft AFK Bot is active and running!\n');
@@ -12,7 +12,7 @@ server.listen(PORT, () => {
   console.log(`HTTP server is listening on port ${PORT}`);
 });
 
-// 2. كود بوت ماينكرافت للحراسة
+// إعدادات بوت ماينكرافت
 const bot = mineflayer.createBot({
   host: 'node-de-free-01.tickhosting.com',
   port: 50589,
@@ -21,18 +21,29 @@ const bot = mineflayer.createBot({
 });
 
 bot.on('spawn', () => {
-  console.log('تم تشغيل البوت بنجاح وحراسة السيرفر نشطة!');
+  console.log('تم تشغيل البوت بنجاح وبدأت حركة الحراسة والتماس مع البيئة!');
   
-  // نظام منع الطرد (القفز وتحريك الرأس كل دقيقة)
+  // نظام حركة نشط لتفعيل الفيزياء ومقاومة الخمول والماء
   setInterval(() => {
+    // التحرك خطوة للأمام ثم للخلف لكي يؤثر فيه تيار الماء
+    bot.setControlState('forward', true);
+    setTimeout(() => {
+      bot.setControlState('forward', false);
+      bot.setControlState('back', true);
+      setTimeout(() => {
+        bot.setControlState('back', false);
+      }, 1000);
+    }, 1000);
+
+    // قفزة خفيفة وتدوير الرأس
     bot.setControlState('jump', true);
     setTimeout(() => {
       bot.setControlState('jump', false);
     }, 500);
     
-    const yaw = bot.entity.yaw + 1;
+    const yaw = bot.entity.yaw + 0.5;
     bot.look(yaw, bot.entity.pitch);
-  }, 60000);
+  }, 30000); // تتكرر كل 30 ثانية
 });
 
 bot.on('end', () => {
