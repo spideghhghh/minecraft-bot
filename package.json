@@ -13,6 +13,6 @@
     "mineflayer-auto-eat": "^3.1.2",
     "mineflayer-armor-manager": "^2.0.0",
     "minecraft-data": "^3.5.0",
-    "vec3": "^0.15.0"
+    "vec3": "^0.1.8"
   }
 }
