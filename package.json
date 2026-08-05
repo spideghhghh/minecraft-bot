@@ -9,7 +9,7 @@
   "dependencies": {
     "express": "^4.19.2",
     "mineflayer": "^4.20.1",
-    "mineflayer-auto-eat": "^5.1.0",
+    "mineflayer-auto-eat": "latest",
     "mineflayer-pathfinder": "^2.4.5",
     "chalk": "^4.1.2",
     "dotenv": "^16.4.5"
