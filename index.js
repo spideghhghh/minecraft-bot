@@ -82,7 +82,7 @@ const TUNISIAN_BRAIN = {
         'Aya marhba bel jme3a lkol, nchallah jawkom a7la jaw!'
     ],
 
-    howAre You: [
+    howAreYou: [
         'Cv hamdoullah, hani n3oum fil ocean w nsayyed fil 7out hhh!',
         'Labes 3al 3alam, nkassem fil khcheb w nrigel fil stuff mte3i.',
         'Oumouri fil jben! Hani 3andi stuff diamond full w nfa9as fil mobs.',
